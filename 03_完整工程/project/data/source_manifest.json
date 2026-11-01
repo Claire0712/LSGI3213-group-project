@@ -1,0 +1,42 @@
+[
+  {
+    "file": "config.xml",
+    "url": "https://raw.githubusercontent.com/matsim-org/matsim-libs/matsim-12.0/examples/scenarios/equil/config.xml",
+    "github_blob_sha": "f7f24bc1708f59391569298fc9c0392782fcf97b",
+    "sha256": "ad174cb633716ad016d67af784b9499880ccfa5ff4c3b1e8c4de9381c4f5a618",
+    "bytes": 2993,
+    "retrieved_at": "2026-09-08T06:40:06.660635+00:00"
+  },
+  {
+    "file": "facilities.xml",
+    "url": "https://raw.githubusercontent.com/matsim-org/matsim-libs/matsim-12.0/examples/scenarios/equil/facilities.xml",
+    "github_blob_sha": "a0c9a23c1166a6a3c67b6d00602cc8767dfbd8c6",
+    "sha256": "8fe73cabf13a0b30eb00a1eb18a994e38cf95a7149be250b634a5ee4701e6991",
+    "bytes": 5121,
+    "retrieved_at": "2026-09-08T06:40:07.152090+00:00"
+  },
+  {
+    "file": "network.xml",
+    "url": "https://raw.githubusercontent.com/matsim-org/matsim-libs/matsim-12.0/examples/scenarios/equil/network.xml",
+    "github_blob_sha": "1f98124e31a13b6596e3e8e1586d9bcbe32dfc16",
+    "sha256": "10fdd3917e7a98d34f1874194aa0f59f48fa7564e41724e22a6c904952d2c697",
+    "bytes": 3268,
+    "retrieved_at": "2026-09-08T06:40:07.682494+00:00"
+  },
+  {
+    "file": "plans100.xml",
+    "url": "https://raw.githubusercontent.com/matsim-org/matsim-libs/matsim-12.0/examples/scenarios/equil/plans100.xml",
+    "github_blob_sha": "fc369a971005cb3db1ea14b8378677855dc2c711",
+    "sha256": "102f109bc81a3c224da8f0ab392054db94110e14706d0db9cf61c5bbc393a25d",
+    "bytes": 32933,
+    "retrieved_at": "2026-09-08T06:40:08.188769+00:00"
+  },
+  {
+    "file": "plans2000.xml.gz",
+    "url": "https://raw.githubusercontent.com/matsim-org/matsim-libs/matsim-12.0/examples/scenarios/equil/plans2000.xml.gz",
+    "github_blob_sha": "d16358a95e9257ef932a8d4f8e54ee5526369567",
+    "sha256": "f83e5482cb5c30506d56fc0a8c54b6f577fb66fcfe612d6ed68f26ba65d0a2ac",
+    "bytes": 10440,
+    "retrieved_at": "2026-09-08T06:40:08.712009+00:00"
+  }
+]

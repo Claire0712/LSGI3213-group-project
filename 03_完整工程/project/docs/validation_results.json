@@ -1,0 +1,13 @@
+{
+  "official_downloads_hash_verified": 5,
+  "successful_and_independently_checked_runs": 18,
+  "main_final_day_trips_verified": 60000,
+  "original_example_final_day_trips": 201,
+  "network_treatments_verified": true,
+  "work_duration_events_verified": 10000,
+  "presentation_seconds": 900,
+  "pptx_slides": 15,
+  "report_pages": 17,
+  "report_body_pages": 16,
+  "slides_pdf_pages": 15
+}

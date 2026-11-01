@@ -1,0 +1,22 @@
+[
+  {
+    "file": "facilities.xml",
+    "matches_local_tutorial": true
+  },
+  {
+    "file": "plans2000.xml.gz",
+    "matches_local_tutorial": true
+  },
+  {
+    "file": "config.xml",
+    "matches_local_tutorial": true
+  },
+  {
+    "file": "plans100.xml",
+    "matches_local_tutorial": true
+  },
+  {
+    "file": "network.xml",
+    "matches_local_tutorial": true
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "scenario": "baseline",
+    "seed": 4711,
+    "am_mean_min": 21.930600000000002,
+    "mean_score": 125.92933669837157,
+    "original_am_mean_min": 21.93465,
+    "original_score": 125.92910400276786,
+    "score_tail_change": 0.00406312344539117
+  },
+  {
+    "scenario": "adaptive",
+    "seed": 4711,
+    "am_mean_min": 15.0069,
+    "mean_score": 131.00433041924578,
+    "original_am_mean_min": 15.010141666666668,
+    "original_score": 129.91523265123865,
+    "score_tail_change": 0.036804563304542626
+  }
+]

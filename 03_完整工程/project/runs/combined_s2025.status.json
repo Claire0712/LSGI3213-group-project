@@ -1,0 +1,26 @@
+{
+  "scenario": "combined",
+  "seed": 2025,
+  "iterations": 100,
+  "config": "scenarios/combined/config_s2025.xml",
+  "command": [
+    "/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/bin/java",
+    "-Xmx2g",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "/Users/zhangshizhuo/Desktop/LSGI/LSGI3213/LSGI3213 ITS Tutorial 1 - For Mac Users/matsim-12.0/matsim-12.0.jar",
+    "org.matsim.run.Controler",
+    "scenarios/combined/config_s2025.xml"
+  ],
+  "exit_code": 0,
+  "seconds": 106.13,
+  "finished_at": "2026-09-08T06:50:11.482611+00:00",
+  "jar_sha256": "c005bda47357d307f12bc5508ed2bd91efce80f57307b5d3c16b0ccf9f535aaa",
+  "input_sha256": {
+    "scenarios/combined/config_s2025.xml": "6a03a02f3c1336c9acf4b19ac446e23c6b6cb361556cbb94734d04320a01ce48",
+    "scenarios/combined/network.xml": "0b0e66c95539d3e2b835c3db02d84f3fa621f442cdd0cd137061eef6a64acd1e",
+    "scenarios/combined/plans.xml": "d03bf661c4b08b7c09b8198ad73d19b8fce4db792deccfbed2a0869675772f5b",
+    "scenarios/combined/facilities.xml": "8fe73cabf13a0b30eb00a1eb18a994e38cf95a7149be250b634a5ee4701e6991"
+  },
+  "input_hash_recorded": "Post-run audit of unchanged inputs; original commands and logs retained"
+}

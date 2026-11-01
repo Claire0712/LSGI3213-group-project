@@ -1,0 +1,98 @@
+[
+  {
+    "scenario": "original100",
+    "seed": 4711,
+    "iterations": 10,
+    "config": "scenarios/original100/config_s4711.xml"
+  },
+  {
+    "scenario": "baseline",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/baseline/config_s4711.xml"
+  },
+  {
+    "scenario": "baseline",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/baseline/config_s42.xml"
+  },
+  {
+    "scenario": "baseline",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/baseline/config_s2025.xml"
+  },
+  {
+    "scenario": "capacity",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/capacity/config_s4711.xml"
+  },
+  {
+    "scenario": "capacity",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/capacity/config_s42.xml"
+  },
+  {
+    "scenario": "capacity",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/capacity/config_s2025.xml"
+  },
+  {
+    "scenario": "stagger",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/stagger/config_s4711.xml"
+  },
+  {
+    "scenario": "stagger",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/stagger/config_s42.xml"
+  },
+  {
+    "scenario": "stagger",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/stagger/config_s2025.xml"
+  },
+  {
+    "scenario": "combined",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/combined/config_s4711.xml"
+  },
+  {
+    "scenario": "combined",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/combined/config_s42.xml"
+  },
+  {
+    "scenario": "combined",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/combined/config_s2025.xml"
+  },
+  {
+    "scenario": "adaptive",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/adaptive/config_s4711.xml"
+  },
+  {
+    "scenario": "adaptive",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/adaptive/config_s42.xml"
+  },
+  {
+    "scenario": "adaptive",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/adaptive/config_s2025.xml"
+  }
+]
