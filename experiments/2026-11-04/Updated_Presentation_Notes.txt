@@ -1,0 +1,76 @@
+Updated presentation speaker notes
+18 slides; planned speaking time: 900 seconds (15 minutes).
+
+1. Capacity and departure scheduling
+in MATSim
+Timing: 20 seconds
+This project examines two ways of reducing congestion: changing road discharge capacity and changing when people depart. We use the official equil example and execute the scenarios in MATSim 12.0. Our evidence includes actual event files, repeated runs and comparisons of trips, daily plan scores and link states. The network and population are synthetic, so the findings describe this experiment rather than a forecast for Hong Kong.
+
+2. Research questions
+Timing: 40 seconds
+We examine capacity and timing jointly, then distinguish travel gains from daily activity scores. The extended analysis tests 0, 30 and 60 minute windows at three capacity levels. We also extend adaptive learning and reconstruct individual scores to explain who loses under an imposed schedule.
+
+3. Official equil data
+Timing: 50 seconds
+The assignment permits equil or chessboard. We selected equil and downloaded the version-tagged inputs from the official MATSim repository. Five downloaded files match the corresponding tutorial files byte for byte. The Blackboard project ZIP itself was not accessed, so we distinguish those two claims. The network has nine outward alternatives and a shared return path. Red lines represent links eleven to nineteen, which receive the capacity treatment. Coordinates are synthetic and road lengths are read from XML, not measured from this drawing. The principal experiment uses the supplied two-thousand-person population with four thousand daily car trips.
+
+4. MATSim execution and learning
+Timing: 45 seconds
+MATSim executes individual activity plans together, so the congestion experienced by one agent depends on everyone else. The mobility simulation is queue based. Vehicles require a free-speed traversal time and then face discharge and downstream constraints. After execution, daily activity and travel experiences generate scores. In the fixed-time scenarios, BestScore has weight zero point nine and ReRoute has weight zero point one, with a five-plan memory limit. We repeat this process through iteration one hundred. The resulting mean score is informative about learning, but a flat line alone is not proof of exact network equilibrium.
+
+5. Five controlled scenarios
+Timing: 65 seconds
+Every main scenario keeps two thousand agents, the same home and work links, car mode and an eight-hour work activity. Capacity doubles discharge capacity on nine corridor links, without adding lanes or increasing free speed. Stagger assigns equally spaced departure times between five thirty and six thirty, preserving a six o’clock mean. Combined applies both changes. Adaptive starts with the baseline inputs but reallocates one tenth of the BestScore weight to TimeAllocationMutator. Its mutation range is thirty minutes and it does not mutate the explicit work duration. Repeated mutations can accumulate, so the final adaptive departure distribution is not restricted to the externally staggered window.
+
+6. Execution and independent checks
+Timing: 45 seconds
+The original main study has fifteen runs. We add fifteen capacity/window combinations and three adaptive runs through iteration five hundred. The supplementary analysis contains twenty-seven grid records plus three long runs. Twelve grid records reuse the original study, so thirty supplementary records do not mean thirty new simulations. Every supplementary final day has four thousand completed trips and zero stuck agents. Event and native trip times match person by person. The score mechanism audit separately verifies eighteen thousand person-run records across nine runs.
+
+7. Morning travel time
+Timing: 60 seconds
+The baseline morning trip takes 22.05 minutes on average across the three seeds. Capacity reduces that to 18.60 minutes. Staggering reduces it to 15.00, and the combination to 15.00. The adaptive scenario gives 15.01 minutes. Trip numbers remain fixed, so these improvements come from travel experience rather than cancelling journeys. Notice the small difference between Stagger and Combined: once the departure pulse has been spread enough to remove most queues, extra capacity has little remaining delay to remove. The report also gives the ninety-fifth percentile and total daily travel hours.
+
+8. Capacity benefit depends on departure spreading
+Timing: 70 seconds
+Source: experiment_extension/results/all_runs.csv and paired_effects.csv. The grid crosses capacity multipliers one, one point five and two with departure windows zero, thirty and sixty minutes, each centered at six. Twelve runs already existed and fifteen are new. Once departures spread across thirty minutes, travel is nearly at the fifteen-minute free-flow floor. Moving to sixty minutes saves only 1.058 seconds and slightly lowers mean daily score. Doubling capacity saves 207.158 seconds from a simultaneous baseline but 1.114 seconds from a thirty-minute baseline. These tested windows do not establish a globally optimal schedule. The three seeds measure algorithm randomness, not a confidence interval for real people.
+
+9. Realised departure patterns
+Timing: 40 seconds
+This figure uses the first trip of every person at seed forty-seven eleven. Baseline departures form a pulse around six. The staggered intervention spreads that pulse symmetrically, whereas adaptive timing emerges from learning. Capacity alone does not change the first planned departure times. The adaptive pattern is affected by the work opening time of seven and the penalties and rewards in the daily scoring system. These are realised departure events, not counts of vehicles already admitted to a full road link. The report also uses five-minute bins to show whether a coarser histogram conceals a short concentration.
+
+10. Travel-time distributions
+Timing: 40 seconds
+The cumulative distribution adds information hidden by an average. At a given travel time, the vertical position shows the share of morning trips completed within that duration. A curve further left generally indicates shorter trips. A near-vertical curve means that many agents experience almost the same duration. The displayed curves use two hundred and one ordered points from each two-thousand-trip distribution for clarity, while the full observations remain in the result files. Differences near the upper end identify the slower travellers, and the report pairs individual agents to examine who gains or loses.
+
+11. Executed scores and timing preferences
+Timing: 55 seconds
+At iteration one hundred, average executed scores across seeds are 125.92 in Baseline and 129.95 in Adaptive. The adaptive line improves more strongly because changing departure times affects activity timing as well as travel. Work opens at seven, has a latest start time of nine and closes at eighteen. Arriving early can therefore interact with the activity utility even if the trip is quick. These model-specific utility scores are not money and should not be converted into monetary benefits without a defensible welfare model. The report includes all three seed histories and a magnified late-iteration panel, and we extend selected runs to test remaining drift. The graph remains the original iteration-zero-to-one-hundred comparison. Later slides show the extension to five hundred and the exact individual score decomposition.
+
+12. Delay on the nine corridor links
+Timing: 50 seconds
+The network-wide travel comparison has a physical mechanism. This plot subtracts nominal free-speed time from full-link traversal time for each treated corridor link. The recorded traversal starts with entered-link and ends with left-link for the same vehicle. We exclude activity endpoint links from full-link speed interpretation because their traversal can be partial. The report also calculates exit flow, exact time-averaged occupancy and density. Occupancy includes moving vehicles, so it must not be called queue length. Throughput can temporarily rise as queues clear even while travel time improves. We use both fifteen-minute and five-minute bins, and leave empty traversal bins missing rather than filling them with zero.
+
+13. Adaptive scores stabilise by iteration 500
+Timing: 80 seconds
+Sources: experiment_extension/results/adaptive_score_histories.csv, adaptive_checkpoints.csv and adaptive_stability.csv. All three adaptive cases restart from the same inputs and run to iteration five hundred. Their first one hundred and one score observations match the earlier runs within 1e-9. Scores rise by approximately one utility unit between iterations one hundred and two hundred, so the original one-hundred horizon was short for score learning. We fixed a descriptive screen before the new runs finished: the absolute difference between mean scores in iterations 451-500 and 401-450 must be at most 0.05 utils. Actual changes are -0.00107 for seed 4711, -0.00201 for seed 42 and -0.00177 for seed 2025. All pass. Small fluctuations remain and this is not an equilibrium proof.
+
+14. Work-activity score losses outweigh travel gains
+Timing: 80 seconds
+Sources: score_explanation/outcome_groups.csv, paired_changes.csv.gz and validation.json. Compare each person to their own baseline using the same seed. Lower-score shares are 28.22 percent for the thirty-minute window and 41.43 percent for sixty minutes. The table averages only those who lose, not the whole population. Every loser has positive travel and home-score changes. The negative work component exceeds those gains. This corrects the earlier hypothesis that home activity losses might explain the result. We reconstruct all eighteen thousand person-run scores across nine runs from events and the exact MATSim 12 source. The maximum error is 5.684e-14 utils. Three seeds repeat the same synthetic population, so these are not eighteen thousand independent people. Waiting and early-departure coefficients are zero and no late-arrival penalties occur.
+
+15. Earlier arrival also brings an earlier work departure
+Timing: 75 seconds
+Sources: score_explanation/paired_changes.csv.gz, person 1367 at seed 4711, and matsim-12.0-sources.jar, CharyparNagelActivityScoring.java. This is an actual simulated example, not an invented person. The work-presence duration stays eight hours. The opening time affects scoring but does not postpone departure until eight productive hours have elapsed. Earlier arrival therefore causes earlier departure and a shorter overlap with opening hours. The score change is -1.20220 utils. The interpretation is specific to the configured schedule. Holding trajectories fixed and removing the scoring opening restriction removes all score losses in the sixty-minute case, but that calculation is not a new behavioral simulation. Testing eight complete hours after opening would require a new controlled simulation, which we have not run.
+
+16. Interpretation for ITS
+Timing: 40 seconds
+These results apply to the current two-thousand-person synthetic demand, scoring rules and deterministic assignment of departure slots. The sensitivity analysis shows that capacity benefits shrink when departures already spread. The score decomposition identifies an opening-time and work-duration interaction, rather than evidence that early departures are inherently harmful in reality. Demand growth, different work schedules, participation and randomized slot assignment remain untested. We do not claim an optimal real-world policy or monetary welfare gain.
+
+17. Conclusions
+Timing: 30 seconds
+The extended evidence supports four conclusions. Thirty minutes of departure spreading already gives near-free-flow travel under current demand. Doubling capacity after that adds little. One hundred iterations is insufficient for adaptive score stabilization, while five hundred passes our stated descriptive screen. Finally, travel and daily utility differ because the model also scores activities. The individual losses are now explained by a reproducible work-scoring mechanism.
+
+18. Sources and acknowledgment
+Timing: 15 seconds
+Full references and file hashes are included in the report and project package. AI assistance covered design, implementation, analysis and writing and is disclosed explicitly. The numerical evidence comes from the saved MATSim runs. Thank you; we welcome questions about the assumptions, methods and results. Supplementary sources: experiment_extension/results and score_explanation, dated 2026-11-04. The new presentation is a separate copy and the original remains unchanged.
+
