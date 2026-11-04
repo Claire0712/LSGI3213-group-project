@@ -1,0 +1,296 @@
+[
+  {
+    "scenario": "cap100_spread0",
+    "seed": 4711,
+    "capacity_factor": 1.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "baseline"
+  },
+  {
+    "scenario": "cap100_spread0",
+    "seed": 42,
+    "capacity_factor": 1.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "baseline"
+  },
+  {
+    "scenario": "cap100_spread0",
+    "seed": 2025,
+    "capacity_factor": 1.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "baseline"
+  },
+  {
+    "scenario": "cap100_spread30",
+    "seed": 4711,
+    "capacity_factor": 1.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap100_spread30/config_s4711.xml"
+  },
+  {
+    "scenario": "cap100_spread30",
+    "seed": 42,
+    "capacity_factor": 1.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap100_spread30/config_s42.xml"
+  },
+  {
+    "scenario": "cap100_spread30",
+    "seed": 2025,
+    "capacity_factor": 1.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap100_spread30/config_s2025.xml"
+  },
+  {
+    "scenario": "cap100_spread60",
+    "seed": 4711,
+    "capacity_factor": 1.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "stagger"
+  },
+  {
+    "scenario": "cap100_spread60",
+    "seed": 42,
+    "capacity_factor": 1.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "stagger"
+  },
+  {
+    "scenario": "cap100_spread60",
+    "seed": 2025,
+    "capacity_factor": 1.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "stagger"
+  },
+  {
+    "scenario": "cap150_spread0",
+    "seed": 4711,
+    "capacity_factor": 1.5,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread0/config_s4711.xml"
+  },
+  {
+    "scenario": "cap150_spread0",
+    "seed": 42,
+    "capacity_factor": 1.5,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread0/config_s42.xml"
+  },
+  {
+    "scenario": "cap150_spread0",
+    "seed": 2025,
+    "capacity_factor": 1.5,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread0/config_s2025.xml"
+  },
+  {
+    "scenario": "cap150_spread30",
+    "seed": 4711,
+    "capacity_factor": 1.5,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread30/config_s4711.xml"
+  },
+  {
+    "scenario": "cap150_spread30",
+    "seed": 42,
+    "capacity_factor": 1.5,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread30/config_s42.xml"
+  },
+  {
+    "scenario": "cap150_spread30",
+    "seed": 2025,
+    "capacity_factor": 1.5,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread30/config_s2025.xml"
+  },
+  {
+    "scenario": "cap150_spread60",
+    "seed": 4711,
+    "capacity_factor": 1.5,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread60/config_s4711.xml"
+  },
+  {
+    "scenario": "cap150_spread60",
+    "seed": 42,
+    "capacity_factor": 1.5,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread60/config_s42.xml"
+  },
+  {
+    "scenario": "cap150_spread60",
+    "seed": 2025,
+    "capacity_factor": 1.5,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap150_spread60/config_s2025.xml"
+  },
+  {
+    "scenario": "cap200_spread0",
+    "seed": 4711,
+    "capacity_factor": 2.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "capacity"
+  },
+  {
+    "scenario": "cap200_spread0",
+    "seed": 42,
+    "capacity_factor": 2.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "capacity"
+  },
+  {
+    "scenario": "cap200_spread0",
+    "seed": 2025,
+    "capacity_factor": 2.0,
+    "spread_minutes": 0,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "capacity"
+  },
+  {
+    "scenario": "cap200_spread30",
+    "seed": 4711,
+    "capacity_factor": 2.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap200_spread30/config_s4711.xml"
+  },
+  {
+    "scenario": "cap200_spread30",
+    "seed": 42,
+    "capacity_factor": 2.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap200_spread30/config_s42.xml"
+  },
+  {
+    "scenario": "cap200_spread30",
+    "seed": 2025,
+    "capacity_factor": 2.0,
+    "spread_minutes": 30,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "new",
+    "config": "scenarios/cap200_spread30/config_s2025.xml"
+  },
+  {
+    "scenario": "cap200_spread60",
+    "seed": 4711,
+    "capacity_factor": 2.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "combined"
+  },
+  {
+    "scenario": "cap200_spread60",
+    "seed": 42,
+    "capacity_factor": 2.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "combined"
+  },
+  {
+    "scenario": "cap200_spread60",
+    "seed": 2025,
+    "capacity_factor": 2.0,
+    "spread_minutes": 60,
+    "iterations": 100,
+    "kind": "grid",
+    "origin": "verified_existing",
+    "source_scenario": "combined"
+  },
+  {
+    "scenario": "adaptive500",
+    "seed": 4711,
+    "iterations": 500,
+    "kind": "convergence",
+    "origin": "new",
+    "config": "scenarios/adaptive500/config_s4711.xml"
+  },
+  {
+    "scenario": "adaptive500",
+    "seed": 42,
+    "iterations": 500,
+    "kind": "convergence",
+    "origin": "new",
+    "config": "scenarios/adaptive500/config_s42.xml"
+  },
+  {
+    "scenario": "adaptive500",
+    "seed": 2025,
+    "iterations": 500,
+    "kind": "convergence",
+    "origin": "new",
+    "config": "scenarios/adaptive500/config_s2025.xml"
+  }
+]
