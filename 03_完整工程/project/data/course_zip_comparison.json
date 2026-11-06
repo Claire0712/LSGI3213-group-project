@@ -1,0 +1,26 @@
+[
+  {
+    "zip_member": "equil/config.xml",
+    "raw_file": "data/raw/config.xml",
+    "sha256": "ad174cb633716ad016d67af784b9499880ccfa5ff4c3b1e8c4de9381c4f5a618",
+    "byte_identical": true
+  },
+  {
+    "zip_member": "equil/facilities.xml",
+    "raw_file": "data/raw/facilities.xml",
+    "sha256": "8fe73cabf13a0b30eb00a1eb18a994e38cf95a7149be250b634a5ee4701e6991",
+    "byte_identical": true
+  },
+  {
+    "zip_member": "equil/network.xml",
+    "raw_file": "data/raw/network.xml",
+    "sha256": "10fdd3917e7a98d34f1874194aa0f59f48fa7564e41724e22a6c904952d2c697",
+    "byte_identical": true
+  },
+  {
+    "zip_member": "equil/plans100.xml",
+    "raw_file": "data/raw/plans100.xml",
+    "sha256": "102f109bc81a3c224da8f0ab392054db94110e14706d0db9cf61c5bbc393a25d",
+    "byte_identical": true
+  }
+]

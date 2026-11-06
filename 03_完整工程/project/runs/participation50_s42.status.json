@@ -1,0 +1,25 @@
+{
+  "scenario": "participation50",
+  "seed": 42,
+  "iterations": 100,
+  "config": "scenarios/participation50/config_s42.xml",
+  "input_sha256": {
+    "scenarios/participation50/config_s42.xml": "4e9c829e54b850a5c08dd8f950809c477425d66bd9b9c42aa37b11c77e2fddc6",
+    "scenarios/participation50/network.xml": "9df295ef599807bd335d9639e2cad0703e245731c5986c7f4b905835bccca805",
+    "scenarios/participation50/plans.xml": "27970d54fc712c8ebfd483bc158835ba74be9c10d9201e4da50d63015cf3d6f3",
+    "scenarios/participation50/facilities.xml": "8fe73cabf13a0b30eb00a1eb18a994e38cf95a7149be250b634a5ee4701e6991"
+  },
+  "command": [
+    "/usr/bin/java",
+    "-Xmx2g",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "/Users/zhangshizhuo/Desktop/LSGI/LSGI3213/group_project/03_\u5b8c\u6574\u5de5\u7a0b/project/runtime/matsim-12.0.jar",
+    "org.matsim.run.Controler",
+    "scenarios/participation50/config_s42.xml"
+  ],
+  "exit_code": 0,
+  "seconds": 105.48,
+  "finished_at": "2026-11-06T10:01:08.872690+00:00",
+  "jar_sha256": "c005bda47357d307f12bc5508ed2bd91efce80f57307b5d3c16b0ccf9f535aaa"
+}

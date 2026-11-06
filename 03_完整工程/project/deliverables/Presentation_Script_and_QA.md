@@ -1,4 +1,4 @@
-# 15-minute presentation script
+# 20-minute presentation script
 
 English slides and script; timing includes pointing to figures and short pauses.
 
@@ -12,55 +12,71 @@ The number of travellers does not determine congestion on its own. When they dep
 
 ## Slide 3: Official equil data (01:25-02:30)
 
-The assignment permits equil or chessboard. We selected equil and downloaded the version-tagged inputs from the official MATSim repository. Five downloaded files match the corresponding tutorial files byte for byte. The Blackboard project ZIP itself was not accessed, so we distinguish those two claims. The network has nine outward alternatives and a shared return path. Red lines represent links eleven to nineteen, which receive the capacity treatment. Coordinates are synthetic and road lengths are read from XML, not measured from this drawing. The principal experiment uses the supplied two-thousand-person population with four thousand daily car trips.
+The assignment permits equil or chessboard. We selected equil and downloaded the version-tagged inputs from the official MATSim repository. Five downloaded files match the corresponding tutorial files byte for byte. The four files in the supplied 2026 Canvas equil ZIP have now also been verified byte for byte. The two-thousand-person file is an additional official example, not part of that course ZIP. The network has nine outward alternatives and a shared return path. Red lines represent links eleven to nineteen, which receive the capacity treatment. Coordinates are synthetic and road lengths are read from XML, not measured from this drawing. The principal experiment uses the supplied two-thousand-person population with four thousand daily car trips.
 
-## Slide 4: MATSim execution and learning (02:30-03:30)
+## Slide 4: Course reference and congestion benchmark (02:30-03:45)
+
+There are two reference scenarios, and their roles must remain separate. The course ZIP contains one hundred people and the unchanged network, facilities and configuration. We reproduce that example first. Its two hundred and one trips include an extra work-to-work movement. We then construct a congestion benchmark using the additional official two-thousand-person file. It has different schedules, so the difference between these populations is not a clean demand-size effect. All reported intervention percentages use the two-thousand-person benchmark as the denominator. Route hints are removed consistently from every main scenario, and the horizon is extended consistently to one hundred iterations. This keeps comparisons controlled while making the departure pulse and its queues visible. The original course reference remains available and is never overwritten.
+
+## Slide 5: MATSim execution and learning (03:45-04:45)
 
 MATSim executes individual activity plans together, so the congestion experienced by one agent depends on everyone else. The mobility simulation is queue based. Vehicles require a free-speed traversal time and then face discharge and downstream constraints. After execution, daily activity and travel experiences generate scores. In the fixed-time scenarios, BestScore has weight zero point nine and ReRoute has weight zero point one, with a five-plan memory limit. We repeat this process through iteration one hundred. The resulting mean score is informative about learning, but a flat line alone is not proof of exact network equilibrium.
 
-## Slide 5: Five controlled scenarios (03:30-04:55)
+## Slide 6: Five controlled scenarios (04:45-06:00)
 
 Every main scenario keeps two thousand agents, the same home and work links, car mode and an eight-hour work activity. Capacity doubles discharge capacity on nine corridor links, without adding lanes or increasing free speed. Stagger assigns equally spaced departure times between five thirty and six thirty, preserving a six o’clock mean. Combined applies both changes. Adaptive starts with the baseline inputs but reallocates one tenth of the BestScore weight to TimeAllocationMutator. Its mutation range is thirty minutes and it does not mutate the explicit work duration. Repeated mutations can accumulate, so the final adaptive departure distribution is not restricted to the externally staggered window.
 
-## Slide 6: Execution and independent checks (04:55-05:40)
+## Slide 7: Execution and independent checks (06:00-06:45)
 
 The main experiment contains fifteen runs. Seeds are paired across scenarios, and all runs use single-thread settings to reduce unnecessary execution variability. Each final main run completes exactly four thousand trips with no stuck agents or unmatched departure and arrival events. We independently reconstruct trip durations from events and match them to every native trip-table row. Selected-plan scores are also checked against the executed-score history. The original one-hundred-person example is run separately as a reproduction check. Its different schedule structure means it is not the denominator for the policy comparisons.
 
-## Slide 7: Morning travel time (05:40-07:05)
+## Slide 8: Morning travel time (06:45-08:00)
 
 The baseline morning trip takes 22.05 minutes on average across the three seeds. Capacity reduces that to 18.60 minutes. Staggering reduces it to 15.00, and the combination to 15.00. The adaptive scenario gives 15.01 minutes. Trip numbers remain fixed, so these improvements come from travel experience rather than cancelling journeys. Notice the small difference between Stagger and Combined: once the departure pulse has been spread enough to remove most queues, extra capacity has little remaining delay to remove. The report also gives the ninety-fifth percentile and total daily travel hours.
 
-## Slide 8: Realised departure patterns (07:05-08:05)
+## Slide 9: Realised departure patterns (08:00-09:00)
 
 This figure uses the first trip of every person at seed forty-seven eleven. Baseline departures form a pulse around six. The staggered intervention spreads that pulse symmetrically, whereas adaptive timing emerges from learning. Capacity alone does not change the first planned departure times. The adaptive pattern is affected by the work opening time of seven and the penalties and rewards in the daily scoring system. These are realised departure events, not counts of vehicles already admitted to a full road link. The report also uses five-minute bins to show whether a coarser histogram conceals a short concentration.
 
-## Slide 9: Travel-time distributions (08:05-09:00)
+## Slide 10: Travel-time distributions (09:00-09:55)
 
 The cumulative distribution adds information hidden by an average. At a given travel time, the vertical position shows the share of morning trips completed within that duration. A curve further left generally indicates shorter trips. A near-vertical curve means that many agents experience almost the same duration. The displayed curves use two hundred and one ordered points from each two-thousand-trip distribution for clarity, while the full observations remain in the result files. Differences near the upper end identify the slower travellers, and the report pairs individual agents to examine who gains or loses.
 
-## Slide 10: Executed scores and timing preferences (09:00-10:20)
+## Slide 11: Executed scores and timing preferences (09:55-11:15)
 
 At iteration one hundred, average executed scores across seeds are 125.92 in Baseline and 129.95 in Adaptive. The adaptive line improves more strongly because changing departure times affects activity timing as well as travel. Work opens at seven, has a latest start time of nine and closes at eighteen. Arriving early can therefore interact with the activity utility even if the trip is quick. These model-specific utility scores are not money and should not be converted into monetary benefits without a defensible welfare model. The report includes all three seed histories and a magnified late-iteration panel, and we extend selected runs to test remaining drift.
 
-## Slide 11: Delay on the nine corridor links (10:20-11:45)
+## Slide 12: Delay on the nine corridor links (11:15-12:40)
 
 The network-wide travel comparison has a physical mechanism. This plot subtracts nominal free-speed time from full-link traversal time for each treated corridor link. The recorded traversal starts with entered-link and ends with left-link for the same vehicle. We exclude activity endpoint links from full-link speed interpretation because their traversal can be partial. The report also calculates exit flow, exact time-averaged occupancy and density. Occupancy includes moving vehicles, so it must not be called queue length. Throughput can temporarily rise as queues clear even while travel time improves. We use both fifteen-minute and five-minute bins, and leave empty traversal bins missing rather than filling them with zero.
 
-## Slide 12: Robustness and convergence limits (11:45-12:50)
+## Slide 13: Robustness and convergence limits (12:40-13:45)
 
 The three-seed range indicates numerical variability under these settings. It is not a confidence interval for a real population. Tail score change compares the last ten iterations with the preceding ten. A small change supports stability of that average, while continued drift, particularly in Adaptive, makes the horizon important. We also reran the baseline and adaptive cases with two hundred iterations from the same starting inputs. The extended morning-time results are baseline: 21.93 → 21.93 min; adaptive: 15.01 → 15.01 min. Longer runs can reveal continuing learning, but they cannot validate synthetic demand or the assumed schedule preferences. More observed data are needed for that.
 
-## Slide 13: Interpretation for ITS (12:50-13:45)
+## Slide 14: Interpretation for ITS (13:45-14:40)
 
 Both interventions address the same queueing process, which explains why their benefits need not add. Across the three seeds, between 41.2 and 41.6 percent of agents have a lower daily score under Stagger and Combined, despite the higher mean score. This supports the warning about schedule inconvenience. The factorial interaction is Combined minus Capacity minus Stagger plus Baseline. A positive value means the joint saving is smaller than the sum of the separate savings. This is a controlled simulation comparison, not a causal estimate for an observed city. An actual ITS programme would need employer coordination or traveller incentives, measured participation and schedule constraints. Expansion would need engineering and cost assessment. The simulation provides traffic evidence but cannot establish which intervention is cost-effective, safest or most equitable.
 
-## Slide 14: Conclusions (13:45-14:40)
+## Slide 15: Sensitivity to participation (14:40-15:55)
+
+The new experiment varies participation while keeping two thousand agents, the network, work duration and scoring unchanged. A fixed shuffled ordering selects nested groups at twenty-five, fifty and seventy-five percent. Participants are evenly spread over the one-hour window; everyone else still departs at six. Each rate is simulated at the same three seeds and one hundred iterations. The endpoints reuse Baseline and Stagger. The plotted means are calculated from the saved runs, and the report gives their seed ranges and scores. Selection is fixed across simulation seeds, so this does not measure variability in who volunteers. The full-participation endpoint uses the original file-order schedule, while intermediate rates shuffle participants. That allocation difference prevents interpreting this as a pure participation effect for identical individual departure assignments. It is one controlled sensitivity exercise, not a forecast of voluntary uptake.
+
+## Slide 16: Why the benefits overlap (15:55-17:10)
+
+Consider the morning journey as a movement time plus congestion delay. In these simulations, spreading all departures brings the journey close to fifteen minutes. Capacity alone reduces the queue but leaves a longer journey. Once staggering has removed most of that queue, capacity has very little delay left to remove. Adding the separate percentage savings would therefore double-count some of the same benefit. The interaction is Combined minus Capacity minus Stagger plus Baseline, about positive three point four five minutes. This is a descriptive factorial contrast. It is not a real-world causal estimate. Fifteen minutes is the observed low-congestion result under this model, rather than a universal travel-time floor for every network. The link-delay evidence supports the explanation, but construction costs and schedule inconvenience are outside the calculation.
+
+## Slide 17: Average improvements and individual losses (17:10-18:25)
+
+A lower average travel time does not mean that everyone prefers the intervention. We pair person IDs between the baseline and treatment at each seed. Around forty-one percent have a lower executed daily score under imposed staggering or the combined intervention. Scores include timing preferences as well as travel, so a person can experience a quicker journey while receiving lower daily utility. Work opens at seven, and the timing of arrivals affects scoring. Pairing preserves identity, but it does not fix route choice or queue position. These results describe simulated individuals rather than social groups because the inputs contain no income, age or neighbourhood variables. A practical scheme would need to establish who can shift schedules and whether compensation or flexible working arrangements are necessary. The mean score alone would hide that question.
+
+## Slide 18: Conclusions (18:25-19:20)
 
 The key result is that the same four thousand daily trips can produce different congestion when supply or timing changes. Capacity reduces the morning queue, while spreading departures removes much of its formation in this synthetic example. Combining them gives limited extra benefit after delays are nearly removed. Adaptive timing illustrates the importance of activity preferences and continuing learning. The project therefore satisfies the three requested analysis dimensions: trips, daily plan scores and link states. The complete inputs, code, logs and events are supplied so that another person can reproduce the analysis and examine assumptions rather than relying only on the presentation.
 
-## Slide 15: Sources and acknowledgment (14:40-15:00)
+## Slide 19: Sources and acknowledgment (19:20-20:00)
 
-Full references and file hashes are included in the report and project package. AI assistance covered design, implementation, analysis and writing and is disclosed explicitly. The numerical evidence comes from the saved MATSim runs. Thank you; we welcome questions about the assumptions, methods and results.
+Full references and file hashes are included in the report and project package. AI assistance covered design, implementation, analysis and writing and is disclosed explicitly. The current course brief limits AI use to initial ideas and proofreading; instructor acceptance of this broader assistance has not been established. The numerical evidence comes from the saved MATSim runs. Thank you; we welcome questions about the assumptions, methods and results.
 
 ## 中文答辩提示
 
@@ -72,3 +88,11 @@ Full references and file hashes are included in the report and project package. 
 - 是否已经收敛？查看末段得分变化与 200 次扩展运行；特别是自适应时间场景仍可能继续学习，不能声称精确均衡。
 - 是否验证过数据？五个官方文件与教程一致；事件出行时间与原生 trip 表逐行匹配，全部完成且无 stuck。
 - 能否直接用于政策？还需真实需求校准、参与率、成本、排放与公平性分析。
+
+## 新增实验答辩提示
+
+- 参与率如何定义？2,000 人中被分配错峰时刻的比例；非参与者仍为 06:00。
+- 为什么三个种子之外还有 3213？3213 只用于固定参与者次序；4711、42、2025 用于 MATSim。不同种子的结果范围不包含参与者抽样不确定性。
+- 为什么不能说是真实自愿参与效果？模型外生指定参与者，没有估计接受意愿或雇主约束。
+- 为什么 100% 与中间点还有区别？100% 复用原文件顺序分配；中间点随机选择参与者，不能视为个人时刻映射完全相同的纯比例效应。
+- 小组信息：组长 ZHANG Shizhuo；组号待确认后规范命名。

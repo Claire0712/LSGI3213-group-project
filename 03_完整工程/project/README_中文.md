@@ -1,22 +1,22 @@
 # LSGI3213 MATSim project
 
-本项目按照提供的 Group Project PDF 完成了公开数据获取、实际 MATSim 仿真、三类必需结果分析、英文报告及 15 分钟汇报材料。
+本项目按照提供的 Group Project PDF 完成了公开数据获取、实际 MATSim 仿真、三类必需结果分析、英文报告及 20 分钟汇报材料。
 
 ## 先看这些文件
 
-- `deliverables/LSGI3213_Equil_Report.pdf`：英文报告，17 页，其中正文 16 页、参考文献 1 页；正文 12 pt，单倍行距排版。
-- `deliverables/LSGI3213_Equil_Slides.pdf`：15 页汇报 PDF。
-- `deliverables/LSGI3213_Equil_Slides.pptx`：可编辑 PowerPoint，6 个原生图表、2 个原生表格，图表附数据工作簿，包含演讲备注。
-- `deliverables/Presentation_Script_and_QA.md`：逐页英文讲稿、精确到秒的 15 分钟时间安排、中文答辩提示。
+- `deliverables/LSGI3213_Equil_Report.pdf`：英文报告，18 页，其中正文 17 页、参考文献 1 页；正文 12 pt，单倍行距排版。
+- `deliverables/LSGI3213_Equil_Slides.pdf`：19 页汇报 PDF。
+- `deliverables/LSGI3213_Equil_Slides.pptx`：可编辑 PowerPoint，7 个原生图表、2 个原生表格，图表附数据工作簿，包含演讲备注。
+- `deliverables/Presentation_Script_and_QA.md`：逐页英文讲稿、精确到秒的 20 分钟时间安排、中文答辩提示。
 - `analysis/summary_by_run.csv`：主要实验逐运行汇总，适合检查数值。
 
-没有提供 Group ID 和组长姓名，因此没有编造身份信息。确定后可按题目规范生成副本：
+组长为 ZHANG Shizhuo，Group ID 尚未提供。确定后可按题目规范生成副本：
 
 ```bash
 python3 scripts/rename_submission.py --group '你的组号' --leader '组长英文姓名'
 ```
 
-该命令只复制 PDF/PPTX 并规范命名，不会声称完成 Blackboard 提交。题目中的组员贡献表是可选项，未编造任何人的贡献。旧日期不影响本次技术实验。
+该命令只复制 PDF/PPTX 并规范命名，不会声称完成 Canvas 提交。题目中的组员贡献表是可选项，未编造任何人的贡献。2026 年新版截止为 11 月 13 日 23:59 前；汇报为 20 分钟。
 
 ## 数据来自哪里
 
@@ -25,7 +25,7 @@ https://github.com/matsim-org/matsim-libs/tree/matsim-12.0/examples/scenarios/eq
 
 下载了 network.xml、facilities.xml、config.xml、plans100.xml、plans2000.xml.gz。五个文件均与本地教程附带版本逐字节相同。`data/source_manifest.json` 记录 URL、下载时间、GitHub blob SHA 和 SHA-256；`data/local_comparison.json` 记录与本地教程的比对。
 
-这是官方**合成示例数据**，不是香港实际交通观测。没有访问 Blackboard 私有 project ZIP，因此不声称核对过该私有包。原始 100 人计划和 2,000 人计划结构不同，报告明确区分了原始示例复现和实验基准。
+这是官方**合成示例数据**，不是香港实际交通观测。2026 年 11 月 6 日已核对新提供的课程 equil.zip，包中四个文件与 data/raw 逐字节一致，见 data/course_zip_comparison.json。plans2000.xml.gz 是额外的官方示例文件，不在课程 ZIP 内。原始 100 人计划和 2,000 人计划结构不同，报告明确区分了原始示例复现和实验基准。
 
 `data/MATSim_user_guide.pdf` 是联网下载的官方用户指南；`data/assignment_brief.pdf` 是提供的题目副本。报告、幻灯片如实披露 AI 辅助范围。
 
@@ -41,7 +41,7 @@ https://github.com/matsim-org/matsim-libs/tree/matsim-12.0/examples/scenarios/eq
 | Combined | 扩容 + 错峰 | 15.00 min |
 | Adaptive | config 增加 0.1 权重的 TimeAllocationMutator | 15.01 min |
 
-每个场景用 seeds 4711、42、2025，运行 iterations 0-100（含端点，即每组 101 次）。另外运行原始 100 人例子，以及 Baseline/Adaptive 各一个延长到 iteration 200 的检查：共 **18 次成功运行**。每个 2,000 人运行的最终日均完成 4,000 次出行，无 stuck；原始例子完成 201 次。
+每个场景用 seeds 4711、42、2025，运行 iterations 0-100（含端点，即每组 101 次）。另外运行原始 100 人例子，以及 Baseline/Adaptive 各一个延长到 iteration 200 的检查：原实验共 **18 次成功运行**。每个 2,000 人运行的最终日均完成 4,000 次出行，无 stuck；原始例子完成 201 次。
 
 扩容平均节省约 15.7%，错峰约 32.0%。但错峰/组合下约 41.2-41.6% 的个体日计划得分下降，不能将平均时间收益解释为人人受益。自适应场景到 200 次仍有小幅得分改善，未声称已经达到严格均衡。
 
@@ -111,10 +111,19 @@ python scripts/prepare_slides.py
 - `am_p95_min`：每个运行内的第 95 百分位；场景汇总取三次 p95 的均值。
 - `mean_score`：最终实际执行计划的平均得分，与 scorestats 的 avg. EXECUTED 相符。
 - `mean_delay_s`：完整 entered-link → left-link 时间减去 length/freespeed，负值截为零。
-- `exit_flow_vph`：完整路段退出数除以 5/15 分钟，再换算为每小时。
+- `exit_flow_vph`：完整路段退出数除以 5/20 分钟，再换算为每小时。
 - `mean_occupancy`：以所有 link/traffic 进入退出事件精确积分的时段平均车辆数，包含移动车辆。
 - `density_veh_km_lane`：平均占用数 / km / lanes。
 - `max_occupancy`：时段最大车辆数，包含从前一时段延续的车辆。
 - `full_link_measure=False`（links 1/20）：活动端点存在部分路段遍历，遍历和流量列设为缺失；占用与密度保留。缺失不能当成零。
 
 主指标来自最终迭代，非 101 次迭代的时间平均。多随机种子范围反映算法不确定性，不是现实人口的置信区间。所有数值以完整精度分析；报告和幻灯片显示值有舍入，PPTX 图表数据最多保留 6 位小数。
+
+## 2026 年修订与提交
+
+- 新版课程文件在仓库 `01_项目要求与素材/2026最新版/`；原题目副本保留为 `data/assignment_brief_historical.pdf`。
+- `scripts/participation_sensitivity.py` 增加 25%、50%、75% 参与率各三随机种子运行，输出 `analysis/participation_by_run.csv`。0%/100% 复用原结果。参与者按固定随机次序嵌套选择；范围只反映仿真种子变化，不反映自愿参与的不确定性。
+- 原始 100 人情景保留作课程参考；全部干预效应只与共同的 2,000 人拥堵实验基准比较。
+- 组长为 ZHANG Shizhuo，组号未确认；提交前须运行重命名脚本并补充真实封面信息。没有代填组员贡献或声称已提交。
+- 新版要求仅允许 AI 辅助初步构思与校对。现有真实披露覆盖更广；不能仅因已披露就声称满足此限制，需组员与教师确认可接受的使用方式。
+- `04_压缩备份` 为历史备份，不是本次提交版本；以 `02_提交成果` 的核验后文件为准。

@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 .venv/
 .env
+# Local slide build intermediates (existing tracked history is retained).
+.build/
+.chart-data-*/

@@ -2,8 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
-import {Presentation,PresentationFile} from '@oai/artifact-tool';
-import {finalizePresentation,applyPresentationChartFont} from '/Users/zhangshizhuo/.codex/plugins/cache/openai-primary-runtime/presentations/26.905.11957/skills/presentations/container_tools/artifact_tool_utils.mjs';
+import {Presentation,PresentationFile} from '/Users/zhangshizhuo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+import {finalizePresentation,applyPresentationChartFont} from '/Users/zhangshizhuo/.codex/plugins/cache/openai-primary-runtime/presentations/26.1104.12130/skills/presentations/container_tools/artifact_tool_utils.mjs';
+process.env.RUNTIME_NODE_MODULES ||= '/Users/zhangshizhuo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const contents=JSON.parse(await fs.readFile(path.join(root,'analysis/slides_content.json'),'utf8'));
 const p=Presentation.create({slideSize:{width:1280,height:720}});
@@ -28,7 +29,7 @@ for(let i=0;i<contents.length;i++){
  const d=contents[i],s=p.slides.add();s.background.fill='#FFFFFF';
  text(s,d.title,68,i===0?90:42,1140,i===0?165:105,i===0?62:44,true,'#17384E');
  if(d.table){
-   const widths=i===4?[200,505,435]:[260,475,405];
+   const widths=d.title==='Five controlled scenarios'?[200,505,435]:[260,475,405];
    const tab=s.tables.add({rows:d.table.length,columns:d.table[0].length,left:68,top:178,width:1140,height:390,columnWidths:widths,values:d.table});
    for(let r=0;r<d.table.length;r++){
      tab.rows[r].height=65;
@@ -49,10 +50,12 @@ for(let i=0;i<contents.length;i++){
 const stage=path.join(root,'.build');const candidate=path.join(stage,'candidate.pptx');
 await(await PresentationFile.exportPptx(p)).save(candidate);
 const norm=spawnSync('/Users/zhangshizhuo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python',[path.join(root,'scripts/normalize_chart_export.py'),candidate],{encoding:'utf8'});if(norm.status!==0)throw new Error(norm.stderr);
-const skill='/Users/zhangshizhuo/.codex/plugins/cache/openai-primary-runtime/presentations/26.905.11957/skills/presentations';
-const finalPath=path.join(root,'deliverables/LSGI3213_Equil_Slides.pptx');
-const result=await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath,pythonExecutable:'/Users/zhangshizhuo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python',integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-bullet-geometry','--validate-heading-fit','--require-native-table-slide','5','--require-native-table-slide','12'],explicitTotalSlideCount:15,requiredNativeTableOwnerSlides:[5,12],requiredNativeChartOwnerSlides:[3,7,8,9,10,11],fontPolicy:{basis:'design',families:['Arial']},materializeLiteralChartWorkbooks:true,verifyArtifactToolImport:true,receiptPath:path.join(stage,'slides_delivery.validation.json')});
+const skill='/Users/zhangshizhuo/.codex/plugins/cache/openai-primary-runtime/presentations/26.1104.12130/skills/presentations';
+const finalizedDir=await fs.mkdtemp(path.join(stage,'finalized-'));
+const finalPath=path.join(finalizedDir,'LSGI3213_Equil_Slides.pptx');
+const result=await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath,pythonExecutable:'/Users/zhangshizhuo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python',integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-bullet-geometry','--validate-heading-fit','--require-native-table-slide','6','--require-native-table-slide','13'],explicitTotalSlideCount:19,requiredNativeTableOwnerSlides:[6,13],requiredNativeChartOwnerSlides:[3,8,9,10,11,12,15],fontPolicy:{basis:'design',families:['Arial']},materializeLiteralChartWorkbooks:true,verifyArtifactToolImport:true,receiptPath:path.join(stage,`slides_delivery-${Date.now()}.validation.json`)});
 console.log(JSON.stringify(result));
+await fs.copyFile(finalPath,path.join(root,'deliverables/LSGI3213_Equil_Slides.pptx'));
 await fs.mkdir(path.join(root,'qa/slides'),{recursive:true});
 for(let i=0;i<p.slides.items.length;i++){
  const slide=p.slides.items[i];const img=await p.export({slide,format:'png',scale:1.5});

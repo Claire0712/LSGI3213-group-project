@@ -1,0 +1,56 @@
+[
+  {
+    "scenario": "participation25",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/participation25/config_s4711.xml"
+  },
+  {
+    "scenario": "participation25",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/participation25/config_s42.xml"
+  },
+  {
+    "scenario": "participation25",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/participation25/config_s2025.xml"
+  },
+  {
+    "scenario": "participation50",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/participation50/config_s4711.xml"
+  },
+  {
+    "scenario": "participation50",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/participation50/config_s42.xml"
+  },
+  {
+    "scenario": "participation50",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/participation50/config_s2025.xml"
+  },
+  {
+    "scenario": "participation75",
+    "seed": 4711,
+    "iterations": 100,
+    "config": "scenarios/participation75/config_s4711.xml"
+  },
+  {
+    "scenario": "participation75",
+    "seed": 42,
+    "iterations": 100,
+    "config": "scenarios/participation75/config_s42.xml"
+  },
+  {
+    "scenario": "participation75",
+    "seed": 2025,
+    "iterations": 100,
+    "config": "scenarios/participation75/config_s2025.xml"
+  }
+]
