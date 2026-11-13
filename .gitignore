@@ -4,6 +4,12 @@ __pycache__/
 *.pyc
 .venv/
 .env
-# Local slide build intermediates (existing tracked history is retained).
+# Local slide build intermediates.
 .build/
 .chart-data-*/
+
+# Local dependency caches and unpublished Overleaf working copies.
+node_modules/
+/overleaf_draft/
+.env.*
+!.env.example
